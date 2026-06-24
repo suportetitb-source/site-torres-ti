@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soluções em TI | Torres Segurança da Informação</title>
+  <meta name="description" content="Soluções em TI. Segurança da Informação, suporte técnico, redes, backup, recuperação de dados e suporte remoto para empresas e residências." />
+  
+  <link rel="icon" type="image/png" href="logo2.png" />
+
+  <style>
+    /* ROLAGEM SUAVE */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0b0f14;
+      color: #e6e6e6;
+    }
+
+    /* MARCA D'ÁGUA FIXA ATRÁS DE TUDO */
+    .watermark {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+      height: 70%;
+      background: url('logo.png') center/contain no-repeat;
+      opacity: 0.08;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    /* MENU DE NAVEGAÇÃO SUPERIOR */
+    nav {
+      background: #05080d;
+      padding: 15px 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+    .nav-brand {
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #00b4d8;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+    }
+    nav a {
+      color: #cfd8dc;
+      text-decoration: none;
+      margin: 0 12px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #00b4d8;
+    }
+
+    /* BOTÃO HAMBÚRGUER (MOBILE) */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 5px;
+    }
+    .menu-toggle .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #cfd8dc;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* DESIGN DO HEADER / HERO SECTION */
+    header {
+      background: radial-gradient(circle at center, #0f4c75 0%, #05080d 75%);
+      color: white;
+      padding: 60px 20px;
+      overflow: hidden;
+    }
+    .hero-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      gap: 30px;
+      text-align: center;
+    }
+    .hero-logo-box {
+      width: 100%;
+      max-width: 400px;
+    }
+    .hero-logo-box img {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 12px rgba(0,180,216,0.5));
+    }
+    .hero-content {
+      flex: 1;
+      max-width: 650px;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      margin-top: 0;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin: 0 auto 30px;
+      color: #cfd8dc;
+    }
+    .hero-image-box {
+      width: 100%;
+      max-width: 320px;
+    }
+    .hero-image-box img {
+      max-width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 25px rgba(0,180,216,0.6));
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 32px;
+      background: linear-gradient(135deg, #00b4d8, #6c63ff);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 0 15px rgba(0,180,216,0.6);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(108,99,255,0.9);
+    }
+
+    section {
+      padding: 70px 20px;
+      max-width: 1150px;
+      margin: auto;
+    }
+    h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #ffffff;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+    }
+    .card {
+      background: linear-gradient(180deg, #111827, #0b0f14);
+      padding: 35px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      transition: transform .25s, box-shadow .25s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.9);
+      border: 1px solid rgba(108,99,255,0.3);
+    }
+    .card h3 {
+      margin-top: 0;
+      color: #6c63ff;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #cfd8dc;
+      line-height: 1.6;
+    }
+    .card .link-text {
+      display: inline-block;
+      margin-top: 15px;
+      color: #00b4d8;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    .about {
+      background: linear-gradient(180deg, #0f172a, #05080d);
+      border-radius: 20px;
+      padding: 50px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    footer {
+      background: #05080d;
+      color: #9aa4ad;
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    footer p {
+      margin: 6px 0;
+      font-size: 0.9rem;
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25d366;
+      color: white;
+      padding: 16px 22px;
+      border-radius: 50px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 0 20px rgba(37,211,102,0.7);
+      z-index: 999;
+    }
+
+    /* REGRAS DE RESPONSIVIDADE (MOBILE & TABLET) */
+    @media (max-width: 991px) {
+      nav {
+        padding: 20px;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      .nav-links {
+        display: none; /* Escondido por padrão no celular */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #05080d;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        padding: 15px 0;
+        box-shadow: 0 15px 25px rgba(0,0,0,0.6);
+      }
+      .nav-links.active {
+        display: flex; /* Exibe ao clicar no hambúrguer */
+      }
+      nav a {
+        margin: 12px 0;
+        width: 100%;
+        text-align: center;
+        font-size: 1rem;
+      }
+      
+      /* Animação dos Risquinhos do Menu transformando em X */
+      .menu-toggle.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+        background-color: #00b4d8;
+      }
+      .menu-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+      }
+      .menu-toggle.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+        background-color: #00b4d8;
+      }
+    }
+
+    /* REGRAS PARA COMPUTADORES (DESKTOP) */
+    @media (min-width: 992px) {
+      nav {
+        padding: 20px 0;
+      }
+      .nav-container {
+        justify-content: center; /* Mantém links centralizados idêntico ao original */
+      }
+      .nav-brand {
+        display: none; /* Oculta o texto da marca no desktop */
+      }
+      .hero-container {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .hero-logo-box {
+        text-align: left;
+      }
+      .hero-image-box {
+        text-align: right;
+        max-width: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="watermark"></div>
+
+<nav>
+  <div class="nav-container">
+    <div class="nav-brand">Torres TI</div>
+    
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    
+    <div class="nav-links" id="nav-links">
+      <a href="#">Início</a>
+      <a href="https://peritoalexandretorres.com.br" target="_blank">Perícia Digital</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#quem-somos">Quem Sou</a>
+      <a href="#planos">Planos</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <div class="hero-container">
+    <div class="hero-logo-box">
+      <img src="logo.png" alt="Torres Segurança da Informação" />
+    </div>
+    
+    <div class="hero-content">
+      <h1>Soluções em TI</h1>
+      <p><strong>Soluções em TI e Segurança da Informação em Santa Cruz do Sul e Região.</strong><br>
+      Atendimento profissional para residências e empresas que precisam de tecnologia segura, estável e computadores de alta performance.</p>
+      <a class="btn" href="https://wa.me/5551992509093" target="_blank">Chamar no WhatsApp agora</a>
+    </div>
+    
+    <div class="hero-image-box">
+      <img src="logo1.png" alt="PC Gamer e Hardware de Alta Performance" />
+    </div>
+  </div>
+</header>
+
+<section id="quem-somos">
+  <h2>Quem Somos</h2>
+  <div class="about">
+    <p>
+      A <strong>Torres Segurança da Informação</strong> é uma empresa especializada em <strong>Soluções em TI, Segurança da Informação e Infraestrutura</strong>, atuando em <strong>Santa Cruz do Sul – RS</strong> e região.
+    </p>
+    <p>
+      Nosso foco é manter sua tecnologia funcionando com <strong>segurança, desempenho e previsibilidade</strong>. Trabalhamos de forma preventiva, evitando falhas, perdas de dados e paradas que geram prejuízo.
+    </p>
+    <p>
+      Aqui você fala direto com quem resolve. Atendimento claro, profissional e sem enrolação.
+    </p>
+  </div>
+</section>
+
+<section id="servicos">
+  <h2>Serviços de TI</h2>
+  <div class="grid">
+    <a href="https://peritoalexandretorres.com.br" target="_blank" class="card">
+      <h3>🔎 Perícia Digital e OSINT</h3>
+      <p>Análise forense, investigação de dados, rastreio de informações e elaboração de laudos técnicos especializados.</p>
+      <span class="link-text">Ver site especializado →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Cria%C3%A7%C3%A3o%20e%20Gerenciamento%20de%20Sites." target="_blank" class="card">
+      <h3>🌐 Criação e Gerenciamento de Sites</h3>
+      <p>Desenvolvimento de sites institucionais, landing pages e portfólios modernos. Gestão contínua com atualizações, hospedagem segura e otimização para o Google (SEO).</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20Seguran%C3%A7a%20da%20Informa%C3%A7%C3%A3o%20na%20minha%20empresa." target="_blank" class="card">
+      <h3>🔐 Segurança da Informação</h3>
+      <p>Firewall, hardening, políticas de segurança, controle de acessos, proteção contra ransomware e boas práticas.</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Preciso%20de%20um%20Suporte%20T%C3%A9cnico%20Presencial%20para%20meus%20computadores." target="_blank" class="card">
+      <h3>🖥️ Suporte Técnico Presencial</h3>
+      <p>Manutenção de computadores, formatação, otimização, remoção de vírus e correção de falhas.</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20um%20atendimento%20r%C3%A1pido%20via%20Suporte%20Remoto." target="_blank" class="card">
+      <h3>🧑‍💻 Suporte Remoto</h3>
+      <p>Atendimento rápido via acesso remoto para resolução de problemas, configurações e suporte emergencial.</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20Redes%20e%20Infraestrutura." target="_blank" class="card">
+      <h3>📡 Redes e Infraestrutura</h3>
+      <p>Configuração de redes cabeadas e Wi‑Fi, roteadores, switches, cabeamento estruturado e organização de rack.</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Quero%20proteger%20os%20dados%20da%20minha%20empresa%20com%20Backup%20e%20Prote%C3%A7%C3%A3o%20de%20Dados." target="_blank" class="card">
+      <h3>☁️ Backup e Proteção de Dados</h3>
+      <p>Backup local e em nuvem, políticas de redundância, recuperação de desastres e continuidade do negócio.</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20com%20Recupera%C3%A7%C3%A3o%20de%20Dados%20perdidos." target="_blank" class="card">
+      <h3>💾 Recuperação de Dados</h3>
+      <p>Recuperação lógica de dados apagados ou corrompidos em HDs, SSDs, pendrives e cartões de memória.</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20PC%20Gamer%20ou%20Workstations." target="_blank" class="card">
+      <h3>🎮 PC Gamer e Workstations</h3>
+      <p>Montagem, upgrade, testes de desempenho, refrigeração e otimização para jogos e uso profissional.</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20Servi%C3%A7o%20Avulso%20de%20TI." target="_blank" class="card">
+      <h3>⚙️ Serviços Avulsos</h3>
+      <p>Atendimentos sob demanda para necessidades pontuais, sem contrato.</p>
+      <span class="link-text">Chamar no WhatsApp →</span>
+    </a>
+  </div>
+</section>
+
+<section id="planos">
+  <h2>Planos de Suporte em TI para Empresas e Residências</h2>
+  <p style="text-align:center; max-width:900px; margin:0 auto 40px; color:#cfd8dc;">
+    Trabalhamos com <strong>planos personalizados</strong>, sem valores públicos. O escopo é definido conforme número de equipamentos, nível de criticidade e necessidade do cliente.
+    <br><br>
+    <em>Peças, equipamentos, licenças e materiais são cobrados separadamente mediante orçamento.</em>
+  </p>
+  <div class="grid">
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20o%20Plano%20Essencial." target="_blank" class="card">
+      <h3>🔹 Plano Essencial</h3>
+      <p>Suporte básico para residências e pequenos negócios, com contrato profissional.</p>
+      <span class="link-text">Consultar plano →</span>
+    </a>
+    
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20para%20o%20Plano%20Profissional." target="_blank" class="card">
+      <h3>🔐 Plano Profissional</h3>
+      <p>Ideal para pequenas e médias empresas que precisam de segurança, backup e suporte contínuo.</p>
+      <span class="link-text">Consultar plano →</span>
+    </a>
+    
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20mais%20detalhes%20sobre%20o%20Plano%20Empresarial%20Premium." target="_blank" class="card">
+      <h3>🏢 Plano Empresarial Premium</h3>
+      <p>Empresas que não podem parar. SLA, monitoramento e gestão completa de TI.</p>
+      <span class="link-text">Consultar plano →</span>
+    </a>
+  </div>
+</section>
+
+<section>
+  <h2>Por que escolher a Torres Segurança da Informação?</h2>
+  <div class="about">
+    <p>✔ Atendimento rápido e profissional</p>
+    <p>✔ Visão preventiva focada em segurança</p>
+    <p>✔ Redução de riscos e falhas</p>
+    <p>✔ Suporte presencial e remoto</p>
+    <p>✔ Atuação em Santa Cruz do Sul – RS e região</p>
+  </div>
+</section>
+
+<section id="contato">
+  <h2>Contato – Fale com um Especialista em TI</h2>
+  <div class="grid">
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20saber%20se%20voc%C3%AAs%20atendem%20a%20minha%20regi%C3%A3o." target="_blank" class="card">
+      <h3>📍 Atendimento</h3>
+      <p>Santa Cruz do Sul – RS</p>
+      <span class="link-text">Verificar Região →</span>
+    </a>
+    
+    <a href="https://wa.me/5551992509093?text=Ol%C3%A1!%20Gostaria%20de%20falar%20com%20um%20especialista%20em%20TI." target="_blank" class="card">
+      <h3>📞 WhatsApp</h3>
+      <p>(51) 99250‑9093</p>
+      <span class="link-text">Abrir Conversa →</span>
+    </a>
+    
+    <a href="mailto:suportetitb@gmail.com" class="card">
+      <h3>📧 E‑mail</h3>
+      <p>suportetitb@gmail.com</p>
+      <span class="link-text">Enviar E-mail →</span>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Torres Segurança da Informação</p>
+  <p>CNPJ: 17.472.638/0001-28</p>
+  <p>Santa Cruz do Sul – RS</p>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/5551992509093" target="_blank">💬 WhatsApp</a>
+
+<script>
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.getElementById('nav-links');
+
+  // Evento de clique para abrir/fechar o menu
+  mobileMenu.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+    navLinks.classList.toggle('active');
+  });
+
+  // Fecha o menu automaticamente quando o usuário clica em algum link
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+      navLinks.classList.remove('active');
+    });
+  });
+</script>
+
+</body>
+</html>
