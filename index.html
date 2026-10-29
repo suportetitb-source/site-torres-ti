@@ -51,6 +51,11 @@
   </script>
   
   <link rel="icon" type="image/png" href="logo2.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
 
   <style>
     /* ROLAGEM SUAVE */
@@ -352,6 +357,397 @@
         max-width: 350px;
       }
     }
+
+    /* ===== CAMADA VISUAL MODERNA: Torres Segurança da Informação ===== */
+    :root {
+      --bg: #0d1117;
+      --bg-deep: #080c11;
+      --surface: #151d27;
+      --surface-hover: #192632;
+      --border: rgba(148, 163, 184, .17);
+      --text: #f0f6fc;
+      --muted: #9ba9b9;
+      --green: #00b4d8;
+      --cyan: #35d9ff;
+      --gradient: linear-gradient(135deg, #00b4d8, #6c63ff);
+    }
+
+    html { scroll-padding-top: 90px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .watermark {
+      width: min(70vw, 850px);
+      height: 70vh;
+      opacity: .035;
+      z-index: 0;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background: rgba(8, 12, 17, .92);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      padding: 13px 24px;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .nav-brand {
+      display: block;
+      flex-shrink: 0;
+      color: var(--green);
+      font-size: .95rem;
+      letter-spacing: 1.3px;
+    }
+
+    .nav-links { gap: 4px; }
+    nav a {
+      margin: 0;
+      padding: 10px 12px;
+      border-radius: 7px;
+      color: #c4cfdb;
+      font-size: .76rem;
+      letter-spacing: .7px;
+      transition: color .2s ease, background .2s ease;
+    }
+
+    nav a:hover, nav a:focus-visible {
+      color: var(--green);
+      background: rgba(57,255,136,.06);
+    }
+
+    .menu-toggle {
+      border: 0;
+      background: transparent;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-toggle .bar { background: var(--green); }
+
+    header {
+      position: relative;
+      isolation: isolate;
+      background:
+        linear-gradient(90deg, rgba(13,17,23,.97), rgba(13,17,23,.82)),
+        radial-gradient(circle at 75% 30%, rgba(53,217,255,.16), transparent 36%),
+        url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2000&q=85') center/cover;
+      padding: 100px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background-image:
+        linear-gradient(rgba(57,255,136,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,255,136,.035) 1px, transparent 1px);
+      background-size: 42px 42px;
+      pointer-events: none;
+    }
+
+    .hero-container {
+      max-width: 1200px;
+      gap: 36px;
+      text-align: left;
+    }
+
+    .hero-logo-box { max-width: 270px; }
+    .hero-logo-box img {
+      filter: drop-shadow(0 0 22px rgba(53,217,255,.22));
+    }
+
+    .hero-content { max-width: 650px; }
+    header h1 {
+      font-size: clamp(2.7rem, 5vw, 4.6rem);
+      line-height: 1.08;
+      font-weight: 800;
+      letter-spacing: -2px;
+      margin-bottom: 22px;
+    }
+
+    header h1::after {
+      content: "";
+      display: block;
+      width: 95px;
+      height: 4px;
+      margin-top: 20px;
+      border-radius: 4px;
+      background: var(--gradient);
+    }
+
+    header p {
+      color: #b5c1cf;
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin: 0 0 22px;
+    }
+
+    header p strong { color: #f0f6fc; }
+    .hero-image-box { max-width: 230px; }
+    .hero-image-box img { filter: drop-shadow(0 0 25px rgba(53,217,255,.22)); }
+
+    .typewriter-line {
+      min-height: 34px;
+      margin: 0 0 25px;
+      color: var(--green);
+      font-size: clamp(.92rem, 1.8vw, 1.08rem);
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      margin-left: 4px;
+      background: var(--green);
+      vertical-align: middle;
+      animation: cursorBlink .8s infinite;
+    }
+
+    @keyframes cursorBlink { 50% { opacity: 0; } }
+
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      padding: 13px 21px;
+      border: 1px solid var(--green);
+      border-radius: 8px;
+      background: var(--green);
+      color: #07130c;
+      box-shadow: 0 7px 25px rgba(57,255,136,.12);
+      font-weight: 800;
+      font-size: .9rem;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      color: #07130c;
+      background: #7dffad;
+      border-color: #7dffad;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(57,255,136,.18);
+    }
+
+    .btn-secondary-custom {
+      background: transparent;
+      color: var(--green);
+      border-color: rgba(57,255,136,.45);
+      box-shadow: none;
+    }
+
+    .btn-secondary-custom:hover {
+      background: var(--green);
+      color: #07130c;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      padding: 90px 24px;
+      scroll-margin-top: 75px;
+    }
+
+    section h2 {
+      text-align: left;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-bottom: 22px;
+    }
+
+    section h2::after {
+      content: "";
+      display: block;
+      width: 58px;
+      height: 3px;
+      margin-top: 17px;
+      border-radius: 4px;
+      background: var(--gradient);
+    }
+
+    #servicos > h2, #planos > h2, #contato > h2 { margin-bottom: 36px; }
+
+    .grid {
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 275px), 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 29px;
+      border-radius: 15px;
+      background: linear-gradient(145deg, #151d27, #10161e);
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 35px rgba(0,0,0,.22);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 54px;
+      height: 2px;
+      background: var(--gradient);
+      opacity: .9;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: var(--surface-hover);
+      border-color: rgba(57,255,136,.38);
+      box-shadow: 0 20px 45px rgba(0,0,0,.35);
+    }
+
+    .card h3 {
+      color: var(--green);
+      font-size: 1.1rem;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 13px;
+    }
+
+    .card p {
+      color: #aebbc9;
+      font-size: .92rem;
+      line-height: 1.75;
+    }
+
+    .card .link-text {
+      color: var(--cyan);
+      font-size: .84rem;
+      margin-top: 18px;
+    }
+
+    .about {
+      padding: clamp(25px, 5vw, 48px);
+      border-radius: 18px;
+      background:
+        radial-gradient(ellipse at top right, rgba(53,217,255,.06), transparent 45%),
+        linear-gradient(145deg, #151d27, #0d1117);
+      border: 1px solid var(--border);
+      box-shadow: 0 20px 45px rgba(0,0,0,.25);
+    }
+
+    .about p {
+      color: #c1ccd8;
+      line-height: 1.85;
+      margin-bottom: 15px;
+    }
+
+    #planos > p { line-height: 1.8; }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      background: #080c11;
+      border-top: 1px solid var(--border);
+      padding: 35px 20px;
+    }
+
+    footer p { color: #94a3b4; }
+    .whatsapp-float {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 18px;
+      border: 1px solid rgba(255,255,255,.15);
+      background: #19b957;
+      color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 28px rgba(25,185,87,.28);
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .whatsapp-float:hover {
+      color: white;
+      background: #128c43;
+      transform: translateY(-3px);
+    }
+
+    .whatsapp-float i { font-size: 1.35rem; }
+
+    @media (min-width: 992px) {
+      .nav-container { justify-content: space-between; }
+      .nav-brand { display: block; }
+      .hero-container {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+      }
+      .hero-logo-box { text-align: left; }
+      .hero-content { flex: 1; }
+      .hero-image-box { text-align: right; }
+    }
+
+    @media (max-width: 991px) {
+      nav { padding: 13px 18px; }
+      .nav-container { flex-wrap: wrap; }
+      .menu-toggle { display: flex; }
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 2px;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding: 12px 20px 18px;
+        background: rgba(8,12,17,.98);
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 15px 25px rgba(0,0,0,.35);
+      }
+      .nav-links.active { display: flex; }
+      nav a { width: 100%; text-align: left; padding: 12px 14px; }
+      header { padding: 65px 22px; }
+      .hero-container { text-align: center; }
+      .hero-logo-box, .hero-image-box { max-width: 220px; margin: 0 auto; }
+      .hero-actions { justify-content: center; }
+      header h1::after { margin-left: auto; margin-right: auto; }
+      section { padding: 70px 20px; }
+      section h2 { text-align: center; }
+      section h2::after { margin-left: auto; margin-right: auto; }
+    }
+
+    @media (max-width: 575px) {
+      header { padding: 50px 18px; }
+      header h1 { font-size: clamp(2.25rem, 10vw, 3.1rem); letter-spacing: -1.2px; }
+      header p { font-size: .98rem; }
+      .hero-actions { flex-direction: column; }
+      .hero-actions .btn { width: 100%; text-align: center; }
+      section { padding: 58px 16px; }
+      .card { padding: 24px; }
+      .whatsapp-float { right: 14px; bottom: 14px; padding: 12px 14px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -360,17 +756,17 @@
 
 <nav>
   <div class="nav-container">
-    <div class="nav-brand">Torres TI</div>
+    <div class="nav-brand">Torres Segurança da Informação</div>
     
-    <div class="menu-toggle" id="mobile-menu">
+    <button class="menu-toggle" id="mobile-menu" type="button" aria-label="Abrir menu" aria-controls="nav-links" aria-expanded="false">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
-    </div>
+    </button>
     
     <div class="nav-links" id="nav-links">
       <a href="#">Início</a>
-      <a href="https://peritoalexandretorres.com.br" target="_blank">Perícia Digital</a>
+      <a href="https://peritoalexandretorres.com.br" target="_blank" rel="noopener noreferrer">Perícia Digital</a>
       <a href="#servicos">Serviços</a>
       <a href="#quem-somos">Quem Sou</a>
       <a href="#planos">Planos</a>
@@ -390,7 +786,13 @@
       <h1>Soluções em TI</h1>
       <p><strong>Soluções em TI e Segurança da Informação em Santa Cruz do Sul e Região.</strong><br>
       Atendimento profissional para residências e empresas que precisam de tecnologia segura, estável e computadores de alta performance.</p>
-      <a class="btn" href="https://wa.me/5551992509093" target="_blank">Chamar no WhatsApp agora</a>
+      <div class="typewriter-line mono" aria-live="polite">
+        <span id="typedText">Manutenção de Hardware &amp; Servidores</span><span class="cursor"></span>
+      </div>
+      <div class="hero-actions">
+        <a class="btn" href="#servicos"><i class="fa-solid fa-arrow-right me-2"></i>Conheça nossos serviços</a>
+        <a class="btn btn-secondary-custom" href="https://wa.me/5551992509093" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp me-2"></i>Falar com especialista</a>
+      </div>
     </div>
     
     <div class="hero-image-box">
@@ -547,7 +949,7 @@
   <p>Santa Cruz do Sul – RS</p>
 </footer>
 
-<a class="whatsapp-float" href="https://wa.me/5551992509093" target="_blank">💬 WhatsApp</a>
+<a class="whatsapp-float" href="https://wa.me/5551992509093" target="_blank" rel="noopener noreferrer" aria-label="Falar pelo WhatsApp"><i class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
 
 <script>
   const mobileMenu = document.getElementById('mobile-menu');
@@ -555,8 +957,10 @@
 
   // Evento de clique para abrir/fechar o menu
   mobileMenu.addEventListener('click', () => {
-    mobileMenu.classList.toggle('active');
-    navLinks.classList.toggle('active');
+    const isOpen = navLinks.classList.toggle('active');
+    mobileMenu.classList.toggle('active', isOpen);
+    mobileMenu.setAttribute('aria-expanded', String(isOpen));
+    mobileMenu.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
   });
 
   // Fecha o menu automaticamente quando o usuário clica em algum link
@@ -564,8 +968,51 @@
     link.addEventListener('click', () => {
       mobileMenu.classList.remove('active');
       navLinks.classList.remove('active');
+      mobileMenu.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-label', 'Abrir menu');
     });
   });
+
+  // Efeito de digitação do subtítulo principal
+  const typedElement = document.getElementById('typedText');
+  const phrases = [
+    'Manutenção de Hardware & Servidores',
+    'Segurança da Informação & Pentesting',
+    'Redes, Backup e Proteção de Dados',
+    'Suporte Técnico para Empresas e Residências'
+  ];
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let deleting = false;
+
+  function typeWriter() {
+    if (!typedElement) return;
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      typedElement.textContent = phrases[0];
+      return;
+    }
+
+    const phrase = phrases[phraseIndex];
+    charIndex += deleting ? -1 : 1;
+    typedElement.textContent = phrase.substring(0, charIndex);
+
+    let delay = deleting ? 28 : 48;
+
+    if (!deleting && charIndex === phrase.length) {
+      deleting = true;
+      delay = 1600;
+    } else if (deleting && charIndex === 0) {
+      deleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      delay = 300;
+    }
+
+    window.setTimeout(typeWriter, delay);
+  }
+
+  typeWriter();
 </script>
 
 </body>
